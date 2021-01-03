@@ -1,0 +1,35 @@
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: {{ .Release.Namespace }}-clusterrole
+rules:
+  - apiGroups:
+    - ""
+    resources:
+    - configmaps
+    verbs:
+    - create
+    - get
+    - list
+    - watch
+  - apiGroups:
+    - ""
+    resources:
+    - nodes
+    verbs:
+    - 'get'
+    - 'list'
+    - 'watch'
+  - apiGroups:
+    - fsc.henderiw.be
+    resources:
+    - '*'
+    verbs:
+    - '*'
+  - apiGroups:
+    - 'k8s.cni.cncf.io'
+    resources:
+    - '*'
+    verbs:
+    - '*'
